@@ -1,0 +1,145 @@
+what is mean by tekton?
+
+              1) Tekton is open-source-project which allows you too build cloud-native CI/CD systems on top kubernetes-native-resources for Building ,testing,deploying software.
+
+              2) compared to other CI/CD solutions , Tekton runs natively on top of kubernetes. It makes use of custom resources definitions (CRDs) in order to register common CI/CD building blocks as a native kubernetes resources.
+
+              3) It designed for creating and managing contineous integration(CI) and Contineous Delivery(CD) CI/CD cloud-native and containerized environment .
+    
+              4)  It Provides a set of resources and a framework for creating contineous integration(CI) and contineous delivery (CD) pipeline.
+  
+
+some key Features of Tekton :
+=============================
+  1) Pipeline as Code: 
+                  
+             --> Tekton allows  developers to defined CI/CD pipelines as code ,tipically  in the form of YMl manifsets.
+
+             --> This make to Easy to version, review and maintain pipelines using familiar code managements practices.
+ 
+  2) Integration-source-control:
+   
+             --> Tekton integrates with popular source control systems like Git, allowing you to trigger pipelines runs based on code changes.
+
+  3) cloud-native compatibility:
+             
+             --> Tekton cloud native and compatible with cloud environments like AWS, Google cloud and Microsoft Azure ,as well as On-primes kubernetes clustes.
+
+
+ 4) Observability: 
+
+            --> Tekton provides detailed logging and monitorning of pipelines runs making it easier to troubleshoot issues the status of your pipelines.
+
+
+ 5) community support :
+ 
+            --> Tekton has an active and growing community of contributes , which means there is a wealth of resources documention and plugins available for users.
+
+6)  Security: 
+    
+           --> Tekton allows yoy to implements RBAC(ROLE BASED ACCESS CONTROL) policies to control who can execute or modifiy pipelines and tasks. This helps ensure that your CI/CD process is secure.
+
+
+
+
+Tekton components:
+==================
+
+1) Task:
+    
+     ---> Task is Fundamental unit of work in tekton. It represents a sprecific or operation in the pipeline, such as building a Docker image ,running test or deploying an application.
+
+    ----> Task are defined as code and can be reused across different pipelines.
+
+2) Taskrun:
+
+    ---> A Taskrun represents the excution of a specific task within a pipeline. It capture the parametes , inputs and outputs for the task.
+
+    ---> Taskrun are created for each task in a PipelineRun and are responsible for running the task in a kubernetes pod or container.
+
+
+3) Pipeline:
+
+    ---> A pipeline is a collection of one or more Tasks that are excuted in a specific order. pipeline define the workflow and dependencies B/W tasks.
+
+    ---> Pipeline are also defined as code and are versioned , making to easy to manages and maintain complex CI/CD workflows.
+
+
+4) pipelineRun:
+
+    ---> A pipelinerun is an instance of a pipeline. it represents the excution of a pipeline with specific parameters and resources.
+
+    ---> when a pipeline is triggered , a pipelinerun is created to manage the actual execution.
+
+
+5) pipelineResources:
+
+    ---> A pipelineResouces is a kubernetes resources that representes input and output resources for tasks within a pipeline. These resources include things source code, Docker images or configuration files.
+
+    ---> PipelineResources enable data flow between tasks and stages in the pipeline.
+
+
+6) Condition :
+ 
+     ---> condition are used to control the flow of a pipeline based on the success or failure of a previous task or other conditions.
+
+     ---> you can defined conditions to excute certain task only specific criteria are met.
+
+ 
+Tekton has various extensions and integrations, such as Tekton Triggers, Tekton Dashboard, and Tekton CLI, which provide additional features and capabilities for advanced use cases.
+
+
+
+Instalation process tekton :
+============================
+
+    1) You need a running Kubernetes cluster. If you're using a cloud provider like AWS, you should have a configured cluster.
+
+    2) Make sure you have kubectl installed and configured to work with your Kubernetes cluster.
+
+
+Install the Tekton Operator:
+----------------------------
+You can install the Tekton Operator by applying its YAML manifest. You can download the manifest from the official Tekton GitHub repository.
+
+----> kubectl apply -f https://storage.googleapis.com/tekton-releases/operator/latest/release.notags.yaml
+
+
+----> 
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+helm repo add cdf https://cdfoundation.github.io/tekton-helm-chart/
+ helm search repo tekton
+
+helm repo update
+helm upgrade --install tekton cdf/tekton-pipeline
+kubectl apply -f https://api.hub.tekton.dev/v1/resource/tekton/task/helm-upgrade-from-repo/0.2/raw
+
+https://github.com/AustrianDataLAB/tekton-demo/blob/main/helm-upgrade-from-repo/README.md
+
+     
+
+
+
+
+
+
+
+
+
+ 
